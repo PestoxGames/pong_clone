@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://df817uvv8s7rn"]
+
+[ext_resource type="Script" path="res://Scenes/Level/main.gd" id="1_hbiiv"]
+[ext_resource type="PackedScene" uid="uid://4fdk5jxn20hj" path="res://Scenes/Ball/ball.tscn" id="1_r0460"]
+[ext_resource type="PackedScene" uid="uid://bt5kob35y02n" path="res://Scenes/Paddle/paddle.tscn" id="1_yjjua"]
+[ext_resource type="PackedScene" uid="uid://c7kwuwxht38w0" path="res://Scenes/paddle_ai/paddle_ai.tscn" id="2_wpln8"]
+[ext_resource type="PackedScene" uid="uid://xny4s1gxsanj" path="res://Scenes/Wall/wall.tscn" id="4_h7yr8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ciub"]
+size = Vector2(20, 692)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pphbb"]
+size = Vector2(20, 670)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_hbiiv")
+
+[node name="Ball" parent="." instance=ExtResource("1_r0460")]
+position = Vector2(576, 320)
+
+[node name="Paddle" parent="." instance=ExtResource("1_yjjua")]
+position = Vector2(27, 320)
+
+[node name="PaddleAI" parent="." instance=ExtResource("2_wpln8")]
+position = Vector2(1126, 320)
+
+[node name="Wall" parent="." instance=ExtResource("4_h7yr8")]
+position = Vector2(576, 16)
+
+[node name="Wall2" parent="." instance=ExtResource("4_h7yr8")]
+position = Vector2(576, 632)
+
+[node name="ScoreZones" type="Node" parent="."]
+
+[node name="ScoreZoneLeft" type="Area2D" parent="ScoreZones"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreZones/ScoreZoneLeft"]
+position = Vector2(-20, 326)
+shape = SubResource("RectangleShape2D_5ciub")
+
+[node name="ScoreZoneRight" type="Area2D" parent="ScoreZones"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreZones/ScoreZoneRight"]
+position = Vector2(1172, 332)
+shape = SubResource("RectangleShape2D_pphbb")
+
+[connection signal="body_entered" from="ScoreZones/ScoreZoneLeft" to="." method="_on_score_zone_left_body_entered"]
+[connection signal="body_entered" from="ScoreZones/ScoreZoneRight" to="." method="_on_score_zone_right_body_entered"]
