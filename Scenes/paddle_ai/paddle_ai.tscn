@@ -1,16 +1,117 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7kwuwxht38w0"]
+[gd_scene load_steps=16 format=3 uid="uid://c7kwuwxht38w0"]
 
 [ext_resource type="Script" path="res://Scenes/paddle_ai/paddle_ai.gd" id="1_sj3r6"]
-[ext_resource type="Texture2D" uid="uid://bhda0eyu6mmpw" path="res://Assets/PaddleEnemy.png" id="1_ygdik"]
+[ext_resource type="Texture2D" uid="uid://buh4q61lyi732" path="res://Assets/paddle_wip.png" id="2_wh3c8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u46bq"]
-size = Vector2(20, 120)
+[sub_resource type="AtlasTexture" id="AtlasTexture_phhge"]
+atlas = ExtResource("2_wh3c8")
+region = Rect2(0, 0, 47, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_il5gk"]
+atlas = ExtResource("2_wh3c8")
+region = Rect2(47, 0, 47, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rc4ow"]
+atlas = ExtResource("2_wh3c8")
+region = Rect2(0, 450, 47, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3nwg"]
+atlas = ExtResource("2_wh3c8")
+region = Rect2(47, 450, 47, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsjbd"]
+atlas = ExtResource("2_wh3c8")
+region = Rect2(94, 450, 47, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s75oc"]
+atlas = ExtResource("2_wh3c8")
+region = Rect2(141, 450, 47, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfkts"]
+atlas = ExtResource("2_wh3c8")
+region = Rect2(188, 450, 47, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igmf7"]
+atlas = ExtResource("2_wh3c8")
+region = Rect2(0, 225, 47, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1lal"]
+atlas = ExtResource("2_wh3c8")
+region = Rect2(47, 225, 47, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yiwvx"]
+atlas = ExtResource("2_wh3c8")
+region = Rect2(94, 225, 47, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07mat"]
+atlas = ExtResource("2_wh3c8")
+region = Rect2(141, 225, 47, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7gmc"]
+atlas = ExtResource("2_wh3c8")
+region = Rect2(188, 225, 47, 225)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qpr8p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phhge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_il5gk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rc4ow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3nwg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsjbd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s75oc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfkts")
+}],
+"loop": true,
+"name": &"move_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igmf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1lal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yiwvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07mat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7gmc")
+}],
+"loop": true,
+"name": &"move_up",
+"speed": 5.0
+}]
 
 [node name="PaddleAI" type="CharacterBody2D"]
 script = ExtResource("1_sj3r6")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_ygdik")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-11, -47, -11, 47, -9, 49, -15, 61, -14, 63, 14, 63, 15, 61, 9, 49, 11, 46, 11, -46, 9, -49, 15, -61, 14, -62, -15, -62, -15, -60, -9, -49)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_u46bq")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qpr8p")
+animation = &"idle"
+autoplay = "idle"
