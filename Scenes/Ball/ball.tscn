@@ -6,11 +6,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_c6n55"]
 radius = 45.0
 
-[node name="Ball" type="RigidBody2D"]
+[node name="Ball" type="CharacterBody2D"]
 scale = Vector2(0.975, 0.975)
-mass = 0.01
-gravity_scale = 0.0
-can_sleep = false
 script = ExtResource("1_8kdli")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
