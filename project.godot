@@ -36,7 +36,11 @@ down={
 ]
 }
 
+[physics]
+
+2d/default_linear_damp=0.0
+
 [rendering]
 
-renderer/rendering_method="mobile"
 environment/defaults/default_clear_color=Color(0.235294, 0.235294, 0.235294, 1)
+viewport/hdr_2d=true
