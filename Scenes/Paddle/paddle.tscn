@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bt5kob35y02n"]
+[gd_scene load_steps=17 format=3 uid="uid://bt5kob35y02n"]
 
 [ext_resource type="Script" path="res://Scenes/Paddle/paddle.gd" id="1_mr7qi"]
 [ext_resource type="Texture2D" uid="uid://buh4q61lyi732" path="res://Assets/paddle_wip.png" id="2_6e3fy"]
@@ -105,6 +105,9 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oohyx"]
+size = Vector2(20, 93)
+
 [node name="Paddle" type="CharacterBody2D"]
 script = ExtResource("1_mr7qi")
 
@@ -114,3 +117,7 @@ sprite_frames = SubResource("SpriteFrames_er2on")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.47713
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_oohyx")

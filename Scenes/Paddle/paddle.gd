@@ -22,11 +22,11 @@ func _physics_process(delta):
 		velocity.y += 1
 
 	if velocity.y > 0:
-	animated_sprite_2d.play("move_down")
+		animated_sprite_2d.play("move_down")
 	if velocity.y < 0:
-	animated_sprite_2d.play("move_up")
+		animated_sprite_2d.play("move_up")
 	if velocity.y == 0:
-	animated_sprite_2d.play("idle")
+		animated_sprite_2d.play("idle")
 
 	if velocity.length() > 0:
 		var _clamp_max = Vector2(screen_size.x, screen_size.y - 50)
